@@ -15,12 +15,12 @@ def install_and_import(package, import_name = None):
         __import__(import_name)
     except ImportError:
         subprocess.check_call([sys.executable, '-m','pip','install',package])
-install_and_import(cv2)
-install_and_import(mss)
+install_and_import("opencv-python", "cv2")
+install_and_import("mss")
 
-install_and_import(pynput)
-install_and_import(pynput.mouse)
-install_and_import(pynput.keyboard)
+install_and_import("pynput")
+install_and_import("pynput.mouse")
+install_and_import("pynput.keyboard")
 
 import cv2
 from pynput import mouse, keyboard
