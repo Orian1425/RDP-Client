@@ -7,6 +7,20 @@ import cv2
 from pynput import mouse, keyboard
 import mss
 import numpy as np
+import subprocess, sys
+import pynput
+
+def install_and_import(package, import_name = None):
+    if import_name is None:
+        import_name = package
+    try:
+        __import__(import_name)
+    except ImportError:
+        subprocess.check_call([sys.executable, '-m','pip','install',package])
+install_and_import(cv2)
+install_and_import(mss)
+install_and_import(pynput.mouse)
+install_and_import(pynput.keyboard)
 
 class MouseController:
     def __init__(self):
