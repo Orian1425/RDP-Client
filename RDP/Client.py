@@ -161,8 +161,19 @@ class Client:
             frame_id += 1
 
         
+def get_local_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # Does not need to be reachable, just triggers the routing interface
+        s.connect(('8.8.8.8', 1))
+        ip = s.getsockname()[0]
+    except Exception:
+        ip = '127.0.0.1'
+    finally:
+        s.close()
+    return ip
 
-client = Client("10.100.102.66", 7777)
+client = Client(get_local_ip(), 7777)
 
 thread = client.start_screen_record()
 client.get_commands()
