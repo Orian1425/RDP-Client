@@ -173,7 +173,7 @@ def get_local_ip():
         s.close()
     return ip
 
-client = Client(get_local_ip(), 7777)
+client = Client("192.168.24.251", 7777)
 
 thread = client.start_screen_record()
 client.get_commands()
