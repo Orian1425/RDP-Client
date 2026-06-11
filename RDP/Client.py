@@ -202,7 +202,7 @@ def discover_server_ip(broadcast_port: int = 50001, timeout: int = 10):
                 server_ip = addr[0]
                 print(f"Discovered server IP: {server_ip}")
                 return server_ip
-    except sock.timeout:
+    except TimeoutError:
         print("Server discovery timed out.")
         return None
     finally:
